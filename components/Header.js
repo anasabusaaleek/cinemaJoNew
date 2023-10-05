@@ -13,7 +13,7 @@ const Header = () => {
       <ImageBackground
         style={{ height: 200, resizeMode: "contain" }}
         source={{
-          uri: "https://originserver-static1-uat.pvrcinemas.com/newweb/movies/thumb/374x226/HO00022376.jpg?v=4",
+          uri: "https://image.tmdb.org/t/p/original/4XM8DUTQb3lhLemJC51Jx4a2EuA.jpg ",
         }}
       >
         <Pressable
@@ -37,15 +37,15 @@ const Header = () => {
           >
             <View>
               <Text style={{ fontSize: 15, fontWeight: "500" }}>
-                Releasing in 1 Day
+                Releasing in 3 Day
               </Text>
               <Text
                 style={{ marginVertical: 5, fontSize: 16, fontWeight: "700" }}
               >
-                CUSTODY
+             Fast X
               </Text>
               <Text style={{ fontSize: 15, color: "gray", fontWeight: "500" }}>
-                U.A • TELUGU
+            
               </Text>
             </View>
             <Pressable

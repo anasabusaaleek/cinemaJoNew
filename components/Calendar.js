@@ -7,7 +7,7 @@ const Calendar = ({ selected, onSelectDate }) => {
   const [dates, setDates] = useState([]);
   const getDates = () => {
     const myDates = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 7; i++) {
       const date = moment().add(i, "days");
       myDates.push(date);
     }

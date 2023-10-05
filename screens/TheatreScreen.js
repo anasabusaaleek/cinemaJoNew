@@ -7,56 +7,7 @@ const TheatreScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [rows, setRows] = useState([
-    {
-      row: "A",
-      seats: [
-        { seat: "1", bookingStatus: "false" },
-        { seat: "2", bookingStatus: "false" },
-        { seat: "3", bookingStatus: "false" },
-        { seat: "4", bookingStatus: "false" },
-        { seat: "5", bookingStatus: "false" },
-        { seat: "6", bookingStatus: "false" },
-        { seat: "7", bookingStatus: "false" },
-      ],
-    },
-    {
-      row: "B",
-      seats: [
-        { seat: "1", bookingStatus: "false" },
-        { seat: "2", bookingStatus: "false" },
-        { seat: "3", bookingStatus: "false" },
-        { seat: "4", bookingStatus: "false" },
-        { seat: "5", bookingStatus: "false" },
-        { seat: "6", bookingStatus: "false" },
-        { seat: "7", bookingStatus: "false" },
-      ],
-    },
-    {
-      row: "C",
-      seats: [
-        { seat: "1", bookingStatus: "false" },
-        { seat: "2", bookingStatus: "false" },
-        { seat: "3", bookingStatus: "false" },
-        { seat: "4", bookingStatus: "false" },
-        { seat: "5", bookingStatus: "false" },
-        { seat: "6", bookingStatus: "false" },
-        { seat: "7", bookingStatus: "false" },
-      ],
-    },
-    {
-      row: "D",
-      seats: [
-        { seat: "1", bookingStatus: "false" },
-        { seat: "2", bookingStatus: "false" },
-        { seat: "3", bookingStatus: "false" },
-        { seat: "4", bookingStatus: "false" },
-        { seat: "5", bookingStatus: "false" },
-        { seat: "6", bookingStatus: "false" },
-        { seat: "7", bookingStatus: "false" },
-      ],
-    },
-  ]);
+
 
   console.log(route.params);
 

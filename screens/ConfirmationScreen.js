@@ -5,76 +5,63 @@ import {
   StyleSheet,
   Text,
   View,
-} from "react-native";
-import React, { useEffect, useLayoutEffect } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { useSelector } from "react-redux";
-import RazorpayCheckout from "react-native-razorpay";
-import { client } from "../pvr-movies/sanity";
+} from 'react-native'
+import React, { useEffect, useLayoutEffect } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
+import RazorpayCheckout from 'react-native-razorpay'
+import { client } from '../pvr-movies/sanity'
 
 const ConfirmationScreen = () => {
-  const route = useRoute();
-  const navigation = useNavigation();
-  console.log(route.params);
-  const cart = useSelector((state) => state.cart.cart);
+  const route = useRoute()
+  const navigation = useNavigation()
+  console.log(route.params)
+  const cart = useSelector((state) => state.cart.cart)
   const total = cart
     .map((item) => item.price * item.quantity)
-    .reduce((curr, prev) => curr + prev, 0);
-  const ticketPrice = route.params.selectedSeats.length * 220;
-  const fee = 87;
-  const grandTotal = ticketPrice + fee + total;
-  console.log(grandTotal);
+    .reduce((curr, prev) => curr + prev, 0)
+  const ticketPrice = route.params.selectedSeats.length * 8
+  const fee = 3
+  const grandTotal = ticketPrice + fee + total
+  console.log(grandTotal)
   useLayoutEffect(() => {
     navigation.setOptions({
       gestureEnabled: false,
-      gestureDirection: "horizontal",
-    });
-  }, []);
+      gestureDirection: 'horizontal',
+    })
+  }, [])
   useEffect(() => {
     const backAction = () => {
       Alert.alert(
-        "Want to end Session",
-        "Go back to main screen",
+        'Want to end Session',
+        'Go back to main screen',
         [
           {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
           },
           {
-            text: "OK",
+            text: 'OK',
             onPress: () =>
-              navigation.reset({ index: 0, routes: [{ name: "HomeScreen" }] }),
+              navigation.reset({ index: 0, routes: [{ name: 'HomeScreen' }] }),
           },
         ],
         { cancelable: false }
-      );
+      )
 
       const backHandler = BackHandler.addEventListener(
-        "hardwareBackPress",
+        'hardwareBackPress',
         backAction
-      );
+      )
 
-      return () => backHandler.remove();
-    };
-  }, []);
+      return () => backHandler.remove()
+    }
+  }, [])
   const pay = () => {
-    const options = {
-      description: "Adding To Wallet",
-      currency: "INR",
-      name: "PVR",
-      key: "rzp_test_E3GWYimxN7YMk8",
-      amount: grandTotal * 100,
-      prefill: {
-        email: "void@razorpay.com",
-        contact: "9191919191",
-        name: "RazorPay Software",
-      },
-      theme: { color: "#F37254" },
-    };
-    RazorpayCheckout.open(options).then((data) => {
-      console.log(data);
-      const updatedRows = [...route.params.rows];
+    
+  
+    const updatedRows = [...route.params.rows];
 
       route.params.selectedSeats.forEach((seat) => {
         const rowIndex = updatedRows.findIndex((row) => row.row === seat.row);
@@ -108,46 +95,48 @@ const ConfirmationScreen = () => {
         showtime: route.params.showtime,
         date: route.params.date,
         seats: route.params.selectedSeats,
-      })
-    });
+      });
+      
+       
+
+
+        
   };
   return (
     <View style={{ padding: 20 }}>
-      <View style={{ backgroundColor: "white", padding: 10, borderRadius: 6 }}>
+      <View style={{ backgroundColor: 'white', padding: 10, borderRadius: 6 }}>
         <View>
-          <Text style={{ fontSize: 15, fontWeight: "500" }}>
+          <Text style={{ fontSize: 15, fontWeight: '500' }}>
             {route.params.name}
           </Text>
-          <Text style={{ marginVertical: 4, color: "gray" }}>
-            U • A English
-          </Text>
+          <Text style={{ marginVertical: 4, color: 'gray' }}>English</Text>
           <Text>{route.params.selectedDate}</Text>
         </View>
 
         <View
           style={{
             height: 1,
-            borderColor: "#E0E0E0",
+            borderColor: '#E0E0E0',
             borderWidth: 1,
             marginTop: 6,
           }}
         />
 
         <View style={{ marginTop: 8 }}>
-          <Text style={{ fontSize: 15, fontWeight: "500" }}>
+          <Text style={{ fontSize: 15, fontWeight: '500' }}>
             {route.params.mall}
           </Text>
           <Text
             style={{
               fontSize: 15,
-              fontWeight: "500",
+              fontWeight: '500',
               marginTop: 4,
-              color: "gray",
+              color: 'gray',
             }}
           >
             AUDI 02 • CLASSIC
           </Text>
-          <Text style={{ color: "red", marginTop: 4, fontWeight: "500" }}>
+          <Text style={{ color: 'red', marginTop: 4, fontWeight: '500' }}>
             {route.params.seats} | {route.params.showtime}
           </Text>
         </View>
@@ -155,7 +144,7 @@ const ConfirmationScreen = () => {
         <View
           style={{
             height: 1,
-            borderColor: "#E0E0E0",
+            borderColor: '#E0E0E0',
             borderWidth: 1,
             marginTop: 6,
           }}
@@ -164,45 +153,31 @@ const ConfirmationScreen = () => {
         <View
           style={{
             marginTop: 10,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
-          <Text style={{ fontSize: 16 }}>TOTAL</Text>
-          <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-            ₹{grandTotal}
-          </Text>
-        </View>
-
-        <View
-          style={{
-            marginTop: 10,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text style={{ fontSize: 15, fontWeight: "500" }}>
+          <Text style={{ fontSize: 15, fontWeight: '500' }}>
             TICKETS {route.params.selectedSeats.length}
           </Text>
-          <Text style={{ fontSize: 15, fontWeight: "500" }}>
-            ₹{route.params.selectedSeats.length * 220}
+          <Text style={{ fontSize: 15, fontWeight: '500' }}>
+            {route.params.selectedSeats.length * 8} $
           </Text>
         </View>
 
         <View
           style={{
             marginTop: 10,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
-          <Text style={{ fontSize: 15, fontWeight: "500" }}>
+          <Text style={{ fontSize: 15, fontWeight: '500' }}>
             Food & Beverages
           </Text>
-          <Text style={{ fontSize: 15, fontWeight: "500" }}>₹{total}</Text>
+          <Text style={{ fontSize: 15, fontWeight: '500' }}>{total} $</Text>
         </View>
 
         <View style={{ marginTop: 10 }}>
@@ -216,15 +191,29 @@ const ConfirmationScreen = () => {
         <View
           style={{
             marginTop: 10,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
-          <Text style={{ fontSize: 15, fontWeight: "500" }}>
+          <Text style={{ fontSize: 15, fontWeight: '500' }}>
             Convenience Fee
           </Text>
-          <Text style={{ fontSize: 15, fontWeight: "500" }}>₹87</Text>
+          <Text style={{ fontSize: 15, fontWeight: '500' }}>3 $</Text>
+        </View>
+
+        <View
+          style={{
+            marginTop: 10,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Text style={{ fontSize: 16 }}>TOTAL</Text>
+          <Text style={{ fontWeight: 'bold', fontSize: 17 }}>
+            {grandTotal} $
+          </Text>
         </View>
       </View>
 
@@ -232,19 +221,19 @@ const ConfirmationScreen = () => {
         onPress={pay}
         style={{
           marginTop: 10,
-          backgroundColor: "#FFC72C",
+          backgroundColor: '#FFC72C',
           padding: 10,
           borderRadius: 4,
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <Text style={{ fontSize: 15, fontWeight: "500" }}>PAY</Text>
+        <Text style={{ fontSize: 15, fontWeight: '500' }}>PAY</Text>
       </Pressable>
     </View>
-  );
-};
+  )
+}
 
-export default ConfirmationScreen;
+export default ConfirmationScreen
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({})

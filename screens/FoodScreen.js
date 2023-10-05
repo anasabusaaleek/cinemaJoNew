@@ -12,7 +12,7 @@ const FoodScreen = () => {
       image:
         "https://burgerking-image.s3.amazonaws.com/products/Home/web/2x_web_20220314053635821439_262x360jpg",
       description: "Crispy Veg Double Patty + Crispy Veg Double Patty",
-      price: 180,
+      price: 17,
       veg: true,
     },
     {
@@ -21,7 +21,7 @@ const FoodScreen = () => {
       image:
         "https://burgerking-image.s3.amazonaws.com/products/Home/web/2x_web_20220314062022014950_262x360jpg",
       description: "Lit Whopper Jr Veg + Lit Whopper Jr Veg",
-      price: 238,
+      price: 12,
       veg: true,
     },
     {
@@ -30,7 +30,7 @@ const FoodScreen = () => {
       image:
         "https://burgerking-image.s3.amazonaws.com/products/Home/web/2x_web_20220613110553977083_262x360jpg",
       description: "Crsipy Chicken Double Patty + Crsipy Chicken Double Patty",
-      price: 258,
+      price: 15,
       veg: false,
     },
     {
@@ -39,7 +39,7 @@ const FoodScreen = () => {
       image:
         "https://burgerking-image.s3.amazonaws.com/products/Home/web/2x_web_20220314062201549185_262x360jpg",
       description: "Chicken Whopper + Chicken Whopper",
-      price: 398,
+      price: 16,
       veg: false,
     },
     {
@@ -48,7 +48,7 @@ const FoodScreen = () => {
       image:
         "https://burgerking-image.s3.amazonaws.com/products/Home/web/2x_web_20210510124442700555_262x360jpg",
       description: "2 Crispy Veg Double Patty + 1 King Fries + 1 Veggie Strips",
-      price: 348,
+      price: 23,
       veg: true,
     },
     {
@@ -57,7 +57,61 @@ const FoodScreen = () => {
       image:
         "https://burgerking-image.s3.amazonaws.com/products/Home/web/2x_web_20210510124749940592_262x360jpg",
       description: "2 Lite Whopper Jr Veg + 1 King Fries",
-      price: 225,
+      price: 20,
+      veg: true,
+    },
+    {
+      id: "6",
+      name: "pop corn small",
+      image:
+        "https://images.deliveryhero.io/image/talabat/Menuitems/mmw_637796768111018837",
+      description: "pop corn small",
+      price: 3.5,
+      veg: true,
+    },
+    {
+      id: "7",
+      name: "pop corn medium",
+      image:
+        "https://images.deliveryhero.io/image/talabat/Menuitems/mmw_637796768111018837",
+      description: "pop corn ",
+      price: 5,
+      veg: true,
+    },
+    {
+      id: "8",
+      name: "pop corn large",
+      image:
+        "https://images.deliveryhero.io/image/talabat/Menuitems/mmw_637796768111018837",
+      description: "pop corn large",
+      price: 7,
+      veg: true,
+    },
+    {
+      id: "9",
+      name: "pepsi medium",
+      image:
+        "https://images.deliveryhero.io/image/talabat/Menuitems/download637890659135255078.png",
+      description: "pepsi",
+      price: 1.5,
+      veg: true,
+    },
+    {
+      id: "10",
+      name: "pepsi",
+      image:
+        "https://images.deliveryhero.io/image/talabat/Menuitems/download637890659135255078.png",
+      description: "pepsi",
+      price: 2.5,
+      veg: true,
+    },
+    {
+      id: "11",
+      name: " mango juice",
+      image:
+        "https://images.deliveryhero.io/image/talabat/Menuitems/mangojuice500x500637762052494257055.jpg",
+      description: "juice",
+      price: 5.5,
       veg: true,
     },
   ];
@@ -88,7 +142,7 @@ const FoodScreen = () => {
               selectedDate: route.params.selectedDate,
               seats: result,
               rows: route.params.rows,
-              selectedSeats: selectedSeats,
+            selectedSeats: route.params.selectedSeats,
               docId: route.params.docId,
             });
           }}
